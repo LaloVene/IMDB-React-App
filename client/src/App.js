@@ -128,6 +128,11 @@ const App = () => {
   };
 
   const handleChange = (event) => setSearchText(event.target.value);
+  const onKeyDown = (event) => {
+    if (event.key === "Enter") {
+      search();
+    }
+  };
 
   const search = async () => {
     const response = await fetch(
@@ -164,6 +169,7 @@ const App = () => {
             <SearchContainer>
               <Search
                 onChange={handleChange}
+                onKeyDown={onKeyDown}
                 placeholder="Search for a movie"
               />
               <SearchButton onClick={search}>
