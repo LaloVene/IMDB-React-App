@@ -1,13 +1,30 @@
 import React from "react";
 import styled from "styled-components";
+import { FaWindowClose } from "react-icons/fa";
 
 const Container = styled.div`
   padding: 1rem;
   padding-top: 0;
+  position: relative;
 
   h2 {
     font-size: 1.5rem;
     margin: 0;
+  }
+`;
+const CloseButton = styled(FaWindowClose)`
+  position: absolute;
+  top: 0rem;
+  right: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.4rem;
+  color: white;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: #454c5a;
   }
 `;
 const MovieContainer = styled.div`
@@ -49,16 +66,17 @@ const Image = styled.img`
   cursor: pointer;
 `;
 
-const SearchList = ({ data, getMovieRequest }) => {
+const SearchList = ({ data, setShowSearch, getMovieRequest }) => {
   const search = (id) => {
     getMovieRequest(id);
+  };
+  const close = () => {
+    setShowSearch(false);
   };
   return (
     <Container>
       <h2>SearchList</h2>
-      {/* {data.map(movie =>  (
-        <div key={movie.id}>
-      ))} */}
+      <CloseButton onClick={close} />
       {data.slice(0, 4).map((movie) => (
         <MovieContainer
           key={movie.id}

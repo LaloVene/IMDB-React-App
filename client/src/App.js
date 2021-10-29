@@ -2,6 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SearchList from "./components/SearchList";
+import { FiSearch } from "react-icons/fi";
 
 import mockMovieData from "./mock/movieData.json";
 import mockSearchData from "./mock/searchData.json";
@@ -16,7 +17,6 @@ const Container = styled.div`
 const SearchContainer = styled.div`
   display: flex;
   align-items: center;
-  column-gap: 0.5rem;
   margin-bottom: 2rem;
 `;
 
@@ -30,13 +30,12 @@ const Search = styled.input`
 `;
 
 const SearchButton = styled.button`
-  border: none;
-  font-size: 0.8rem;
+  font-size: 1.2rem;
   background: #a40505;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem 1rem;
+  padding: 0.45rem 1rem;
   border: none;
   color: white;
   border-radius: 0.5rem;
@@ -155,11 +154,14 @@ const App = () => {
                 onChange={handleChange}
                 placeholder="Search for a movie"
               />
-              <SearchButton onClick={search}>Search</SearchButton>
+              <SearchButton onClick={search}>
+                <FiSearch />
+              </SearchButton>
             </SearchContainer>
             {showSearch && (
               <>
                 <SearchList
+                  setShowSearch={setShowSearch}
                   data={searchResults.results}
                   getMovieRequest={getMovieRequest}
                 />
