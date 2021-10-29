@@ -3,6 +3,8 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import SearchList from "./components/SearchList";
 import { FiSearch } from "react-icons/fi";
+import { MdOutlineOndemandVideo } from "react-icons/md";
+import { IoNewspaperOutline } from "react-icons/io5";
 
 import mockMovieData from "./mock/movieData.json";
 import mockSearchData from "./mock/searchData.json";
@@ -82,6 +84,7 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  column-gap: 0.8rem;
   padding: 0.8rem 1.2rem;
   border: none;
   color: white;
@@ -97,6 +100,15 @@ const Button = styled.button`
     color: black;
     transform: scale(1.1);
   }
+`;
+
+const VideoIcon = styled(MdOutlineOndemandVideo)`
+  font-size: 1.5rem;
+  color: #a40505;
+`;
+const LearnIcon = styled(IoNewspaperOutline)`
+  font-size: 1.5rem;
+  color: #335bab;
 `;
 
 const App = () => {
@@ -177,9 +189,11 @@ const App = () => {
                 <Description>{movie.videoDescription}</Description>
                 <ButtonContainer>
                   <Button onClick={() => goToUrl(movie.linkEmbed)}>
+                    <VideoIcon />
                     Watch Trailer
                   </Button>
                   <Button onClick={() => goToUrl(movie.link)}>
+                    <LearnIcon />
                     Learn more
                   </Button>
                 </ButtonContainer>
